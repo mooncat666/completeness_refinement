@@ -1,0 +1,308 @@
+>>> Loading modules from /g/scb2/bork/mocat/software/bork_modulefiles/ <<<
+mkdir: cannot create directory '0_data': File exists
+mkdir: cannot create directory '0_data/ANI_95_v1_000537534': File exists
+mkdir: cannot create directory '0_data/ANI_95_v1_000537534/gunc': File exists
+mkdir: cannot create directory '0_data/ANI_95_v1_000537534/checkm2': File exists
+mkdir: cannot create directory '1.1_gunc_refined': File exists
+srun: job 46833122 queued and waiting for resources
+srun: job 46833122 has been allocated resources
+srun: job 46842311 queued and waiting for resources
+srun: job 46842311 has been allocated resources
+srun: job 46842754 queued and waiting for resources
+srun: job 46842783 queued and waiting for resources
+srun: job 46842784 queued and waiting for resources
+srun: job 46842783 has been allocated resources
+srun: job 46842784 has been allocated resources
+srun: job 46842754 has been allocated resources
+[08/09/2022 08:07:01 PM] INFO: Running quality prediction workflow with 32 threads.
+[08/09/2022 08:07:01 PM] INFO: Running quality prediction workflow with 32 threads.
+[08/09/2022 08:08:12 PM] ERROR: Output directory must be empty: 0_data/ANI_95_v1_000537534/checkm2 Use --force if you wish to overwrite existing directory. 
+
+[08/09/2022 08:08:12 PM] INFO: Calling genes in 499 bins with 32 threads:
+srun: error: smer20-2: task 0: Exited with exit code 1
+[08/09/2022 08:11:53 PM] INFO: Calculating metadata for 499 bins with 32 threads:
+[08/09/2022 08:11:56 PM] INFO: Annotating input genomes with DIAMOND using 32 threads
+[08/09/2022 08:37:53 PM] INFO: Processing DIAMOND output
+[08/09/2022 08:37:59 PM] INFO: Calculating completeness of pathways and modules.
+[08/09/2022 08:38:06 PM] INFO: Predicting completeness and contamination using general model.
+[08/09/2022 08:38:06 PM] INFO: Predicting completeness using specific model.
+[08/09/2022 08:38:07 PM] INFO: Using cosine simlarity to reference data to select appropriate predictor model.
+[08/09/2022 08:38:10 PM] INFO: Parsing all results and constructing final output table.
+[08/09/2022 08:38:10 PM] INFO: CheckM2 finished successfully.
+Traceback (most recent call last):
+  File "/g/scb2/bork/groudko/scripts/ref_v1.1/add_gunc_results.py", line 5, in <module>
+    import pandas as pd
+  File "/g/bork3/home/groudko/miniconda/envs/jupyternotebook/lib/python3.9/site-packages/pandas/__init__.py", line 16, in <module>
+    raise ImportError(
+ImportError: Unable to import required dependencies:
+numpy: 
+
+IMPORTANT: PLEASE READ THIS FOR ADVICE ON HOW TO SOLVE THIS ISSUE!
+
+Importing the numpy C-extensions failed. This error can happen for
+many reasons, often due to issues with your setup or how NumPy was
+installed.
+
+We have compiled some common reasons and troubleshooting tips at:
+
+    https://numpy.org/devdocs/user/troubleshooting-importerror.html
+
+Please note and check the following:
+
+  * The Python version is: Python3.9 from "/g/bork3/home/groudko/miniconda/envs/jupyternotebook/bin/python"
+  * The NumPy version is: "1.23.1"
+
+and make sure that they are the versions you expect.
+Please carefully study the documentation linked above for further help.
+
+Original error was: libquadmath.so.0: cannot open shared object file: No such file or directory
+
+awk: fatal: cannot open file `1.1_gunc_refined/ANI_95_v1_000537534/gunc/refinement/refined_genomes/None_refined/checkm2/quality_report_gunc.tsv' for reading (No such file or directory)
+ERROR: no refined bins are passing filtering. Terminating script execution on species ANI_95_v1_000537534
+double free or corruption (fasttop)
+>>> Timeout 2s while loading modules from /g/scb2/bork/mocat/software/bork_modulefiles/ <<<
+mkdir: cannot create directory '0_data': File exists
+mkdir: cannot create directory '0_data/ANI_95_v1_000537534': File exists
+mkdir: cannot create directory '0_data/ANI_95_v1_000537534/gunc': File exists
+mkdir: cannot create directory '0_data/ANI_95_v1_000537534/checkm2': File exists
+Lmod has detected the following error: The following module(s) are unknown: "gunc"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "gunc"
+
+Also make sure that all modulefiles written in TCL start with the string #%Module
+
+
+
+mkdir: cannot create directory '1.1_gunc_refined': File exists
+mkdir: cannot create directory '1.1_gunc_refined/ANI_95_v1_000537534': File exists
+mkdir: cannot create directory '1.1_gunc_refined/ANI_95_v1_000537534/gunc': File exists
+srun: job 46891321 queued and waiting for resources
+srun: job 46891321 has been allocated resources
+slurmstepd: error: execve(): gunc: No such file or directory
+srun: error: smer17-1: task 0: Exited with exit code 2
+srun: job 46892231 queued and waiting for resources
+srun: job 46892231 has been allocated resources
+Traceback (most recent call last):
+  File "/g/scb2/bork/groudko/scripts/refine_gunc.py", line 3, in <module>
+    import scipy
+ModuleNotFoundError: No module named 'scipy'
+srun: error: smer29-3: task 0: Exited with exit code 1
+Traceback (most recent call last):
+  File "/g/scb2/bork/groudko/scripts/step2_refine_gunc.py", line 9, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+mkdir: cannot create directory '1.1_gunc_refined/ANI_95_v1_000537534/gunc/refinement/refined_genomes/None_refined/gunc': File exists
+srun: job 46892239 queued and waiting for resources
+Lmod has detected the following error: The following module(s) are unknown: "checkm2"
+
+Please check the spelling or version number. Also try "module spider ..."
+It is also possible your cache file is out-of-date; it may help to try:
+  $ module --ignore-cache load "checkm2"
+
+Also make sure that all modulefiles written in TCL start with the string #%Module
+
+
+
+srun: job 46892240 queued and waiting for resources
+srun: job 46892241 queued and waiting for resources
+srun: job 46892240 has been allocated resources
+slurmstepd: error: execve(): checkm2: No such file or directory
+srun: error: smer27-2: task 0: Exited with exit code 2
+mkdir: cannot create directory '1.1_gunc_refined/ANI_95_v1_000537534/compl50': File exists
+For improved speed, add 'usejni=t' to the command line of BBMap tools which support the use of the compiled jni C code.
+    mkdir: cannot create directory '1.2_dedupl': File exists
+srun: job 46892241 has been allocated resources
+slurmstepd: error: execve(): checkm2: No such file or directory
+srun: error: smer27-2: task 0: Exited with exit code 2
+srun: job 46892239 has been allocated resources
+slurmstepd: error: execve(): gunc: No such file or directory
+srun: error: smer18-1: task 0: Exited with exit code 2
+srun: job 46893314 queued and waiting for resources
+srun: job 46893314 has been allocated resources
+java -Djava.library.path=/g/easybuild/x86_64/CentOS/7/haswell/software/BBMap/37.68-foss-2016b-Java-1.8.0_112/jni/ -ea -Xmx175555m -Xms175555m -cp /g/easybuild/x86_64/CentOS/7/haswell/software/BBMap/37.68-foss-2016b-Java-1.8.0_112/current/ jgi.Dedupe threads=16 in=1.2_dedupl/ANI_95_v1_000537534/merged.fa out=1.2_dedupl/ANI_95_v1_000537534/dd_merged.fa minidentity=99 exact=f
+Executing jgi.Dedupe [threads=16, in=1.2_dedupl/ANI_95_v1_000537534/merged.fa, out=1.2_dedupl/ANI_95_v1_000537534/dd_merged.fa, minidentity=99, exact=f]
+
+Dedupe version 37.68
+Set threads to 16
+Initial:
+Memory: max=176413m, free=170891m, used=5522m
+
+Found 537 duplicates.
+Finished exact matches.    Time: 5.307 seconds.
+Memory: max=176413m, free=135122m, used=41291m
+
+Found 38456 contained sequences.
+Finished containment.      Time: 6.299 seconds.
+Memory: max=176413m, free=132889m, used=43524m
+
+Removed 38456 invalid entries.
+Finished invalid removal.  Time: 0.048 seconds.
+Memory: max=176413m, free=132889m, used=43524m
+
+Input:                  	58932 reads 		759112617 bases.
+Duplicates:             	537 reads (0.91%) 	4011588 bases (0.53%)     	0 collisions.
+Containments:           	38456 reads (65.25%) 	389642297 bases (51.33%)    	7939103 collisions.
+Result:                 	19939 reads (33.83%) 	365458732 bases (48.14%)
+
+Printed output.            Time: 2.762 seconds.
+Memory: max=176413m, free=131817m, used=44596m
+
+Time:   			14.473 seconds.
+Reads Processed:       58932 	4.07k reads/sec
+Bases Processed:        759m 	52.45m bases/sec
+mkdir: cannot create directory '1.3_discard_short': File exists
+mkdir: cannot create directory '2.1_build_vg': File exists
+srun: job 46894105 queued and waiting for resources
+srun: job 46894105 has been allocated resources
+srun: forcing job termination
+srun: Job step aborted: Waiting up to 242 seconds for job step to finish.
+slurmstepd: error: *** STEP 46894105.0 ON sm-epyc-05 CANCELLED AT 2022-08-10T19:39:23 ***
+srun: error: sm-epyc-05: task 0: Killed
+*** Error in `srun': double free or corruption (fasttop): 0x0000000001ede9c0 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x81329)[0x7f897e90d329]
+/usr/lib64/slurm/libslurmfull.so(slurm_xfree+0x25)[0x7f897f50a2e8]
+/usr/lib64/slurm/libslurmfull.so(+0x5c732)[0x7f897f3ee732]
+/usr/lib64/slurm/libslurmfull.so(list_destroy+0xbc)[0x7f897f4439d9]
+/usr/lib64/slurm/libslurmfull.so(client_io_handler_destroy+0xe3)[0x7f897f3f0b54]
+/usr/lib64/slurm/libslurmfull.so(slurm_step_launch_wait_finish+0x4ba)[0x7f897f3f4e71]
+/usr/lib64/slurm/launch_slurm.so(launch_p_step_wait+0x22)[0x7f897cd8a681]
+srun(launch_g_step_wait+0x2f)[0x40bf9d]
+srun[0x407dbd]
+srun(srun+0x1527)[0x4093e8]
+srun(main+0x9)[0x4098a0]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f897e8ae555]
+srun[0x4071e9]
+======= Memory map: ========
+00400000-0041e000 r-xp 00000000 fd:00 924829                             /usr/bin/srun
+0061d000-0061e000 r--p 0001d000 fd:00 924829                             /usr/bin/srun
+0061e000-00620000 rw-p 0001e000 fd:00 924829                             /usr/bin/srun
+01d36000-01fdc000 rw-p 00000000 00:00 0                                  [heap]
+7f8968000000-7f896802d000 rw-p 00000000 00:00 0 
+7f896802d000-7f896c000000 ---p 00000000 00:00 0 
+7f8970000000-7f8970021000 rw-p 00000000 00:00 0 
+7f8970021000-7f8974000000 ---p 00000000 00:00 0 
+7f8974000000-7f8974021000 rw-p 00000000 00:00 0 
+7f8974021000-7f8978000000 ---p 00000000 00:00 0 
+7f8978000000-7f8978021000 rw-p 00000000 00:00 0 
+7f8978021000-7f897c000000 ---p 00000000 00:00 0 
+7f897c06f000-7f897c070000 ---p 00000000 00:00 0 
+7f897c070000-7f897c170000 rw-p 00000000 00:00 0 
+7f897c170000-7f897c171000 r-xp 00000000 fd:00 935314                     /usr/lib64/slurm/route_default.so
+7f897c171000-7f897c370000 ---p 00001000 fd:00 935314                     /usr/lib64/slurm/route_default.so
+7f897c370000-7f897c371000 r--p 00000000 fd:00 935314                     /usr/lib64/slurm/route_default.so
+7f897c371000-7f897c372000 rw-p 00001000 fd:00 935314                     /usr/lib64/slurm/route_default.so
+7f897c372000-7f897c373000 ---p 00000000 00:00 0 
+7f897c373000-7f897c473000 rw-p 00000000 00:00 0 
+7f897c473000-7f897c474000 ---p 00000000 00:00 0 
+7f897c474000-7f897c574000 rw-p 00000000 00:00 0 
+7f897c574000-7f897c575000 ---p 00000000 00:00 0 
+7f897c575000-7f897c675000 rw-p 00000000 00:00 0 
+7f897c675000-7f897c67e000 r-xp 00000000 fd:00 934455                     /usr/lib64/libmunge.so.2.0.0
+7f897c67e000-7f897c87d000 ---p 00009000 fd:00 934455                     /usr/lib64/libmunge.so.2.0.0
+7f897c87d000-7f897c87e000 r--p 00008000 fd:00 934455                     /usr/lib64/libmunge.so.2.0.0
+7f897c87e000-7f897c87f000 rw-p 00009000 fd:00 934455                     /usr/lib64/libmunge.so.2.0.0
+7f897c87f000-7f897c882000 r-xp 00000000 fd:00 927958                     /usr/lib64/slurm/auth_munge.so
+7f897c882000-7f897ca81000 ---p 00003000 fd:00 927958                     /usr/lib64/slurm/auth_munge.so
+7f897ca81000-7f897ca82000 r--p 00002000 fd:00 927958                     /usr/lib64/slurm/auth_munge.so
+7f897ca82000-7f897ca83000 rw-p 00003000 fd:00 927958                     /usr/lib64/slurm/auth_munge.so
+7f897ca83000-7f897ca84000 ---p 00000000 00:00 0 
+7f897ca84000-7f897cb84000 rw-p 00000000 00:00 0 
+7f897cb84000-7f897cb85000 r-xp 00000000 fd:00 929083                     /usr/lib64/slurm/mpi_none.so
+7f897cb85000-7f897cd84000 ---p 00001000 fd:00 929083                     /usr/lib64/slurm/mpi_none.so
+7f897cd84000-7f897cd85000 r--p 00000000 fd:00 929083                     /usr/lib64/slurm/mpi_none.so
+7f897cd85000-7f897cd86000 rw-p 00001000 fd:00 929083                     /usr/lib64/slurm/mpi_none.so
+7f897cd86000-7f897cd8c000 r-xp 00000000 fd:00 929060                     /usr/lib64/slurm/launch_slurm.so
+7f897cd8c000-7f897cf8b000 ---p 00006000 fd:00 929060                     /usr/lib64/slurm/launch_slurm.so
+7f897cf8b000-7f897cf8c000 r--p 00005000 fd:00 929060                     /usr/lib64/slurm/launch_slurm.so
+7f897cf8c000-7f897cf8d000 rw-p 00006000 fd:00 929060                     /usr/lib64/slurm/launch_slurm.so
+7f897cf8d000-7f897cf90000 r-xp 00000000 fd:00 929126                     /usr/lib64/slurm/switch_cray_aries.so
+7f897cf90000-7f897d18f000 ---p 00003000 fd:00 929126                     /usr/lib64/slurm/switch_cray_aries.so
+7f897d18f000-7f897d190000 r--p 00002000 fd:00 929126                     /usr/lib64/slurm/switch_cray_aries.so
+7f897d190000-7f897d191000 rw-p 00003000 fd:00 929126                     /usr/lib64/slurm/switch_cray_aries.so
+7f897d191000-7f897d193000 r-xp 00000000 fd:00 976106                     /usr/lib64/slurm/switch_none.so
+7f897d193000-7f897d392000 ---p 00002000 fd:00 976106                     /usr/lib64/slurm/switch_none.so
+7f897d392000-7f897d393000 r--p 00001000 fd:00 976106                     /usr/lib64/slurm/switch_none.so
+7f897d393000-7f897d394000 rw-p 00002000 fd:00 976106                     /usr/lib64/slurm/switch_none.so
+7f897d394000-7f897d3a1000 r-xp 00000000 fd:00 976101                     /usr/lib64/slurm/select_cray_aries.so
+7f897d3a1000-7f897d5a0000 ---p 0000d000 fd:00 976101                     /usr/lib64/slurm/select_cray_aries.so
+7f897d5a0000-7f897d5a1000 r--p 0000c000 fd:00 976101                     /usr/lib64/slurm/select_cray_aries.so
+7f897d5a1000-7f897d5a2000 rw-p 0000d000 fd:00 976101                     /usr/lib64/slurm/select_cray_aries.so
+7f897d5a2000-7f897d5a3000 rw-p 00000000 00:00 0 
+7f897d5a3000-7f897d5b0000 r-xp 00000000 fd:00 976102                     /usr/lib64/slurm/select_linear.so
+7f897d5b0000-7f897d7af000 ---p 0000d000 fd:00 976102                     /usr/lib64/slurm/select_linear.so
+7f897d7af000-7f897d7b0000 r--p 0000c000 fd:00 976102                     /usr/lib64/slurm/select_linear.so
+7f897d7b0000-7f897d7b1000 rw-p 0000d000 fd:00 976102                     /usr/lib64/slurm/select_linear.so
+7f897d7b1000-7f897d7d7000 r-xp 00000000 fd:00 929112                     /usr/lib64/slurm/select_cons_res.so
+7f897d7d7000-7f897d9d6000 ---p 00026000 fd:00 929112                     /usr/lib64/slurm/select_cons_res.so
+7f897d9d6000-7f897d9d7000 r--p 00025000 fd:00 929112                     /usr/lib64/slurm/select_cons_res.so
+7f897d9d7000-7f897d9d8000 rw-p 00026000 fd:00 929112                     /usr/lib64/slurm/select_cons_res.so
+7f897d9d8000-7f897da03000 r-xp 00000000 fd:00 976100                     /usr/lib64/slurm/select_cons_tres.so
+7f897da03000-7f897dc03000 ---p 0002b000 fd:00 976100                     /usr/lib64/slurm/select_cons_tres.so
+7f897dc03000-7f897dc04000 r--p 0002b000 fd:00 976100                     /usr/lib64/slurm/select_cons_tres.so
+7f897dc04000-7f897dc05000 rw-p 0002c000 fd:00 976100                     /usr/lib64/slurm/select_cons_tres.so
+7f897dc05000-7f897e470000 r--s 00000000 fd:00 787149                     /var/lib/sss/mc/passwd
+7f897e470000-7f897e478000 r-xp 00000000 fd:00 936279                     /usr/lib64/libnss_sss.so.2
+7f897e478000-7f897e677000 ---p 00008000 fd:00 936279                     /usr/lib64/libnss_sss.so.2
+7f897e677000-7f897e678000 r--p 00007000 fd:00 936279                     /usr/lib64/libnss_sss.so.2
+7f897e678000-7f897e679000 rw-p 00008000 fd:00 936279                     /usr/lib64/libnss_sss.so.2
+7f897e679000-7f897e685000 r-xp 00000000 fd:00 929120                     /usr/lib64/libnss_files-2.17.so
+7f897e685000-7f897e884000 ---p 0000c000 fd:00 929120                     /usr/lib64/libnss_files-2.17.so
+7f897e884000-7f897e885000 r--p 0000b000 fd:00 929120                     /usr/lib64/libnss_files-2.17.so
+7f897e885000-7f897e886000 rw-p 0000c000 fd:00 929120                     /usr/lib64/libnss_files-2.17.so
+7f897e886000-7f897e88c000 rw-p 00000000 00:00 0 
+7f897e88c000-7f897ea50000 r-xp 00000000 fd:00 922237                     /usr/lib64/libc-2.17.so
+7f897ea50000-7f897ec4f000 ---p 001c4000 fd:00 922237                     /usr/lib64/libc-2.17.so
+7f897ec4f000-7f897ec53000 r--p 001c3000 fd:00 922237                     /usr/lib64/libc-2.17.so
+7f897ec53000-7f897ec55000 rw-p 001c7000 fd:00 922237                     /usr/lib64/libc-2.17.so
+7f897ec55000-7f897ec5a000 rw-p 00000000 00:00 0 
+7f897ec5a000-7f897ec71000 r-xp 00000000 fd:00 922346                     /usr/lib64/libpthread-2.17.so
+7f897ec71000-7f897ee70000 ---p 00017000 fd:00 922346                     /usr/lib64/libpthread-2.17.so
+7f897ee70000-7f897ee71000 r--p 00016000 fd:00 922346                     /usr/lib64/libpthread-2.17.so
+7f897ee71000-7f897ee72000 rw-p 00017000 fd:00 922346                     /usr/lib64/libpthread-2.17.so
+7f897ee72000-7f897ee76000 rw-p 00000000 00:00 0 
+7f897ee76000-7f897ee8c000 r-xp 00000000 fd:00 929136                     /usr/lib64/libresolv-2.17.so
+7f897ee8c000-7f897f08c000 ---p 00016000 fd:00 929136                     /usr/lib64/libresolv-2.17.so
+7f897f08c000-7f897f08d000 r--p 00016000 fd:00 929136                     /usr/lib64/libresolv-2.17.so
+7f897f08d000-7f897f08e000 rw-p 00017000 fd:00 929136                     /usr/lib64/libresolv-2.17.so
+7f897f08e000-7f897f090000 rw-p 00000000 00:00 0 
+7f897f090000-7f897f191000 r-xp 00000000 fd:00 929068                     /usr/lib64/libm-2.17.so
+7f897f191000-7f897f390000 ---p 00101000 fd:00 929068                     /usr/lib64/libm-2.17.so
+7f897f390000-7f897f391000 r--p 00100000 fd:00 929068                     /usr/lib64/libm-2.17.so
+7f897f391000-7f897f392000 rw-p 00101000 fd:00 929068                     /usr/lib64/libm-2.17.so
+7f897f392000-7f897f564000 r-xp 00000000 fd:00 929064                     /usr/lib64/slurm/libslurmfull.so
+7f897f564000-7f897f764000 ---p 001d2000 fd:00 929064                     /usr/lib64/slurm/libslurmfull.so
+7f897f764000-7f897f767000 r--p 001d2000 fd:00 929064                     /usr/lib64/slurm/libslurmfull.so
+7f897f767000-7f897f772000 rw-p 001d5000 fd:00 929064                     /usr/lib64/slurm/libslurmfull.so
+7f897f772000-7f897f778000 rw-p 00000000 00:00 0 
+7f897f778000-7f897f77a000 r-xp 00000000 fd:00 928089                     /usr/lib64/libdl-2.17.so
+7f897f77a000-7f897f97a000 ---p 00002000 fd:00 928089                     /usr/lib64/libdl-2.17.so
+7f897f97a000-7f897f97b000 r--p 00002000 fd:00 928089                     /usr/lib64/libdl-2.17.so
+7f897f97b000-7f897f97c000 rw-p 00003000 fd:00 928089                     /usr/lib64/libdl-2.17.so
+7f897f97c000-7f897f98a000 r-xp 00000000 fd:00 934975                     /usr/lib64/liblz4.so.1.8.3
+7f897f98a000-7f897fb89000 ---p 0000e000 fd:00 934975                     /usr/lib64/liblz4.so.1.8.3
+7f897fb89000-7f897fb8a000 r--p 0000d000 fd:00 934975                     /usr/lib64/liblz4.so.1.8.3
+7f897fb8a000-7f897fb8b000 rw-p 0000e000 fd:00 934975                     /usr/lib64/liblz4.so.1.8.3
+7f897fb8b000-7f897fbad000 r-xp 00000000 fd:00 930146                     /usr/lib64/ld-2.17.so
+7f897fbc0000-7f897fbc5000 rw-p 00000000 00:00 0 
+7f897fbc5000-7f897fbc9000 r--p 00000000 00:5b 27697767                   /g/bork3/home/groudko/miniconda/lib/libgcc_s.so.1
+7f897fbc9000-7f897fbd9000 r-xp 00004000 00:5b 27697767                   /g/bork3/home/groudko/miniconda/lib/libgcc_s.so.1
+7f897fbd9000-7f897fbdc000 r--p 00014000 00:5b 27697767                   /g/bork3/home/groudko/miniconda/lib/libgcc_s.so.1
+7f897fbdc000-7f897fbdd000 r--p 00016000 00:5b 27697767                   /g/bork3/home/groudko/miniconda/lib/libgcc_s.so.1
+7f897fbdd000-7f897fbde000 rw-p 00017000 00:5b 27697767                   /g/bork3/home/groudko/miniconda/lib/libgcc_s.so.1
+7f897fbde000-7f897fbe1000 rw-p 00000000 00:00 0 
+7f897fbf6000-7f897fbf7000 rw-p 00000000 00:00 0 
+7f897fbf7000-7f897fc9d000 r--p 00000000 00:5b 17916572                   /g/bork3/home/groudko/miniconda/lib/libstdc++.so.6.0.30
+7f897fc9d000-7f897fd31000 r-xp 000a6000 00:5b 17916572                   /g/bork3/home/groudko/miniconda/lib/libstdc++.so.6.0.30
+7f897fd31000-7f897fd99000 r--p 0013a000 00:5b 17916572                   /g/bork3/home/groudko/miniconda/lib/libstdc++.so.6.0.30
+7f897fd99000-7f897fda4000 r--p 001a1000 00:5b 17916572                   /g/bork3/home/groudko/miniconda/lib/libstdc++.so.6.0.30
+7f897fda4000-7f897fda8000 rw-p 001ac000 00:5b 17916572                   /g/bork3/home/groudko/miniconda/lib/libstdc++.so.6.0.30
+7f897fda8000-7f897fdac000 rw-p 00000000 00:00 0 
+7f897fdac000-7f897fdad000 r--p 00021000 fd:00 930146                     /usr/lib64/ld-2.17.so
+7f897fdad000-7f897fdae000 rw-p 00022000 fd:00 930146                     /usr/lib64/ld-2.17.so
+7f897fdae000-7f897fdaf000 rw-p 00000000 00:00 0 
+7ffeedcc3000-7ffeedce7000 rw-p 00000000 00:00 0                          [stack]
+7ffeeddc8000-7ffeeddca000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
