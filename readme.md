@@ -8,8 +8,8 @@ PARAMETERS SET:
 - filter mappings 0.9 of contig length
 - incl
 - no initial coverage filtering
-- checkm2
-
+- checkm2 (alternative - CheckM)
+- GraphAligner (alternative - minigraph)
 
 SCRIPTS:
 
@@ -17,7 +17,7 @@ pipe.sh - main executable
 gen_bash_jobs.sh - generates a file with jobs to run pipe.sh for each species
 map_contigs.sh - a script to map the sample to the graph and filter the alignments; uses
     filter_mappings.r - filters out contigs with less than n (default 0.9) of length mapped -> contig ids
-    add_init.py - adds contig 
+    add_init.py - adds missing contigs from initial bin
     fasta_from_ids.py - gets sequences for the list of contig ids and writes to fasta file
 gen_jobs.sh - in the pipeline generates a file with jobs to run map_contigs.sh script on every sample
 check_job_status.py - is used in the pipeline to check if jobs which are run with submitjobs are completed
