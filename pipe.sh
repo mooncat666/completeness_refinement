@@ -1,6 +1,5 @@
 # usage: bash pipe.sh -s species_name [-d outdir --temp temp_dir -h]
 
-# current edits: comment blocks, commented 0_get_data.py line, commented pggb line
 
 path=/g/scb2/bork/groudko/scripts/ref_v1.1 # path to scripts
 source ~/.bashrc
@@ -15,10 +14,12 @@ case "$1" in
 final=$2 ;;
 -s | --species) species=$2 ;;
 --temp) temp_outdir=$2 ;;
+--database) database=$2 ;;
 -c | --consensus) cons=$2 ;;
 -m | --min_coverage) mincov=$2 ;;
 -v | --verbose) _verbose=True ;;
--h) echo "Usage: bash pipe.sh -s species [-d output_directory; default current working directory] [--temp temp_dir] [-c consensus block length; default 100] [-m minimal coverage; int or 1:100perc; default 5perc] [-v] [-h]"
+-h) echo "Usage: bash pipe.sh -s species [-d output_directory; default current working directory] [--temp temp_dir] 
+       [-c consensus block length; default 100] [-m minimal coverage; int or 1:100perc; default 5perc] [--database global | freeze13 | both] [-v] [-h]"
 exit 1
 shift ;;
 esac
@@ -70,12 +71,12 @@ module purge
 
 # create links to data files (Mongo DB): samples, initial MAGs; get GUNC and CheckM (deprecated) results
 conda activate jupyternotebook_clone
-#srun --mem 32000 -c 1 -t 600 python ${path}/0_get_data.py "${species}"
+srun --mem 32000 -c 1 -t 600 python ${path}/0_get_data_glo.py "${species}" $database
 conda deactivate
 
 species=$( echo $species | sed 's/ /_/g' )
 
-<< '###'
+
 
 mkdir -p 0_data/${species}
 
@@ -89,14 +90,22 @@ mkdir -p 0_data/${species}/unzipped_samples
 
 for f in 0_data/${species}/init_MAGs/*fa.gz
 do
-gunzip -c $f > 0_data/${species}/unzipped_init_MAGs/$(basename $f .gz)
+  gunzip -c $f > 0_data/${species}/unzipped_init_MAGs/$(basename $f .gz)
 done
 
 for f in 0_data/${species}/samples/*fa.gz
 do
-gunzip -c $f > 0_data/${species}/unzipped_samples/$(basename $f .gz)
+  gunzip -c $f > 0_data/${species}/unzipped_samples/$(basename $f .gz)
 done
 
+fi
+
+if [[ ! $database == global ]]; then
+mkdir -p 0_data/${species}/unzipped_reference_genomes
+for f in 0_data/${species}/reference_genomes/*fa.gz
+do
+  gunzip -c $f > 0_data/${species}/unzipped_reference_genomes/$(basename $f .gz)
+done
 fi
 
 
@@ -153,6 +162,14 @@ do
 ln -s -r 1.1_gunc_refined/${species}/gunc/refinement/refined_genomes/${gunc_clade}/$f*.fa 1.1_gunc_refined/${species}/compl50
 done
 
+# add reference genomes if freeze13 is used
+if [[ ! $database == global ]]; then
+for f in 0_data/${species}/unzipped_reference_genomes/*fa
+do
+  ln -s -r 0_data/${species}/unzipped_reference_genomes/$f 1.1_gunc_refined/${species}/compl50
+done
+fi
+
 # check if successful
 # implement: check return codes
 if [ ! "$(ls -A 1.1_gunc_refined/${species}/compl50)" ]; then
@@ -197,8 +214,7 @@ samtools faidx 1.2_dedupl/${species}/dd_merged.fa
 conda deactivate
 
 # run pggb to construct the graph
-#srun -n 1 -c 16 -t 6000 --mem 200000 pggb -i 1.2_dedupl/${species}/dd_merged.fa -o 2.1_build_vg/${species} -P asm20 -t 16 -p 94 -s 10000 -C cons,${cons} -n ${files_number} -k 49 -G 
-7919,8069 --skip-viz
+srun -n 1 -c 16 -t 6000 --mem 200000 pggb -i 1.2_dedupl/${species}/dd_merged.fa -o 2.1_build_vg/${species} -P asm20 -t 16 -p 94 -s 10000 -C cons,${cons} -n ${files_number} -k 49 -G 7919,8069 --skip-viz
 
 # check if successful and rerun if not
 if [ ! -f 2.1_build_vg/${species}/*cons\@${cons}*.gfa ] && [ ! -f 2.1_build_vg/${species}/*final.gfa ]; then
@@ -266,9 +282,9 @@ srun -n 1 -t 600 --mem 32000 odgi view -i 2.2_edit_vg/${species}/filtered_graph.
 conda deactivate
 
 
-###
-gunc_clade=$( basename $( ls -d 1.1_gunc_refined/${species}/gunc/refinement/refined_genomes/*_*/ ))
-files_number=$( ls 1.1_gunc_refined/${species}/compl50/*fa | wc -l )
+
+#gunc_clade=$( basename $( ls -d 1.1_gunc_refined/${species}/gunc/refinement/refined_genomes/*_*/ ))
+#files_number=$( ls 1.1_gunc_refined/${species}/compl50/*fa | wc -l )
 
 
 # 3.1 & 3.2 map contigs from assemblies to graph
@@ -355,8 +371,7 @@ module purge
 # write end files and stats to FINAL directory
 
 if [ $final != $outdir ]; then
-mkdir ${final}/4.2_output_n_stats
-mkdir ${final}/4.2_output_n_stats/${species}
+mkdir -p ${final}/4.2_output_n_stats/${species}
 cp *pdf *tsv ${final}/4.2_output_n_stats/${species}
 fi
 
