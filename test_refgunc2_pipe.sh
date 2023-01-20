@@ -117,9 +117,11 @@ mkdir -p 0_data/${species}/checkm2
 
 ###
 
+
 #conda activate jupyternotebook_clone
 #conda deactivate
 
+module purge
 species=$( echo $species | sed 's/ /_/g' )
 
 
@@ -144,7 +146,7 @@ cd ../../../..
 srun -p htc-el8 -n 1 -c 8 --mem 32000 -t 1000 python /g/scb2/bork/groudko/scripts/refine_gunc.py 1.1_gunc_refined/${species}/gunc
 python /g/scb2/bork/groudko/scripts/refine_gunc_step2_test.py 0_data/${species}/unzipped_init_MAGs 1.1_gunc_refined/${species}/gunc
 
-###
+
 
 gunc_clade=$( basename $( ls -d 1.1_gunc_refined/${species}/gunc/refinement/refined_genomes/*_*/ ))
 
@@ -159,8 +161,9 @@ srun -p htc-el8 -n 1 -c 16 -t 2000 --mem 64000 gunc run -d 1.1_gunc_refined/${sp
 module purge
 module load checkm2
 
+# REMOVE COMMENTS
 # on initial data for 4.2, runs in background
-srun -p htc-el8 -n 1 -c 32 --mem 64000 -t 1200 checkm2 predict -i 0_data/${species}/unzipped_init_MAGs -t 32 -o 0_data/${species}/checkm2 -x .fa
+#srun -p htc-el8 -n 1 -c 32 --mem 64000 -t 1200 checkm2 predict -i 0_data/${species}/unzipped_init_MAGs -t 32 -o 0_data/${species}/checkm2 -x .fa
 
 # on gunc refined bins to select them for graph construction
 srun -p htc-el8 -n 1 -c 32 --mem 64000 -t 1200 checkm2 predict -i 1.1_gunc_refined/${species}/gunc/refinement/refined_genomes/${gunc_clade} -t 32 -o 1.1_gunc_refined/${species}/gunc/refinement/refined_genomes/${gunc_clade}/checkm2 -x .fa 
@@ -186,13 +189,14 @@ do
 done
 fi
 
+
 # check if successful
 # and if there is more than 1 genome
 # implement: check return codes
 if [ ! "$(ls -A 1.1_gunc_refined/${species}/compl50)" ]; then
   echo "ERROR: no refined bins are passing filtering. Terminating script execution on species ${species}" >> /dev/stderr
   exit 1
-else if [[ $(ls 1.1_gunc_refined/${species}/compl50 | wc -l ) -eq 1 ]]; then
+elif [[ $(ls 1.1_gunc_refined/${species}/compl50 | wc -l ) -eq 1 ]]; then
   echo "Unfortunately, only 1 genome suits for graph construction. Terminating script execution on species ${species}" >> /dev/stderr
   log "Exited"
   exit 0
@@ -359,7 +363,7 @@ cd ../../../..
 
 # run refinement
 srun -p htc-el8 -n 1 -c 8 --mem 32000 -t 600 python /g/scb2/bork/groudko/scripts/refine_gunc.py 4.1_refine_output/${species}/gunc
-python /g/scb2/bork/groudko/scripts/step2_refine_gunc.py 3.2_filter_alignments/${species} 4.1_refine_output/${species}/gunc
+python /g/scb2/bork/groudko/scripts/refine_gunc_step2_test.py 3.2_filter_alignments/${species} 4.1_refine_output/${species}/gunc
 gunc_clade=$( basename $( ls -d 4.1_refine_output/${species}/gunc/refinement/refined_genomes/*_*/ ))
 
 
